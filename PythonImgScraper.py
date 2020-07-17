@@ -2,8 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 import lxml
 import pandas as pd
+import re
 
-
+myArray = []
+links = []
 search_url ='URL'
 # HTTP GET requests
 page = requests.get(search_url)
@@ -11,13 +13,27 @@ page = requests.get(search_url)
 if page.status_code == requests.codes.ok:
   print('Everything is cool!')
   bs = BeautifulSoup(page.text, 'lxml')
-  print(bs)
-  
-def main(): 
+  #print(bs)
+#use this function to list all imgs on view source code   
+def main():
+    count = 0
     list_all_imgs = bs.findAll('img')
-    print(list_all_imgs)
+    #print(list_all_imgs)
     for img in list_all_imgs:
-        myArray = []
+        global myArray
         myArray.append(img)
-        print(myArray)
-main()
+        count += 1
+        
+#main()
+
+#print(myArray)
+#use this function to find all objects by class name
+def getLinks():
+    count = 0
+    
+    list_all_links = bs.findAll('a', attrs={"class":"chapter-name text-nowrap"})
+    print(list_all_links)
+    
+   
+
+getLinks()
