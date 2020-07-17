@@ -31,7 +31,7 @@ def main():
 def getLinks():
     count = 0
     
-    list_all_links = bs.findAll('a', attrs={"class":"chapter-name text-nowrap"})
+    list_all_links = bs.findAll('a', attrs={"class":"CLASSHERE"})
     print(list_all_links)
     
    
